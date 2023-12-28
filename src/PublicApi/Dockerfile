@@ -22,4 +22,8 @@ RUN dotnet publish "./PublicApi.csproj" -c Release -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+# Mend traceability labels
+LABEL io.mend.image.dockerfile.path=main/src/PublicApi/Dockerfile
+LABEL org.opencontainers.image.source=https://github.com/samqdemocorp-mend/eshoponweb
+
 ENTRYPOINT ["dotnet", "PublicApi.dll"]
