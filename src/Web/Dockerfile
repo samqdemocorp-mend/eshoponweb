@@ -24,4 +24,8 @@ COPY --from=build /app/src/Web/out ./
 # Optional: Set this here if not setting it from docker-compose.yml
 # ENV ASPNETCORE_ENVIRONMENT Development
 
+# Mend traceability labels
+LABEL io.mend.image.dockerfile.path=main/src/Web/Dockerfile
+LABEL org.opencontainers.image.source=https://github.com/samqdemocorp-mend/eshoponweb
+
 ENTRYPOINT ["dotnet", "Web.dll"]
